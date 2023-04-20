@@ -1,25 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect, useState } from "react";
+import Bbq from "./components/BBQ/Bbq";
+import Home from "./components/Home/Home";
+import { SyncLoader, BounceLoader } from "react-spinners";
 
-function App() {
+
+
+export const App = () => {
+  const [bbqs, setBbq] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [loadingone, setLoadingone] = useState(false);
+  const [carts, setCart] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  useEffect(() => {
+    setLoadingone(true);
+    setTimeout(() => {
+      setLoadingone(false);
+    }, 3000);
+  }, []);
+
+  useEffect(() => {
+    fetch("bbq.json")
+      .then((res) => res.json())
+      .then((data) => setBbq(data));
+  });
+
+  const hancleAddToCart = (bbq) =>{
+    const newCart = [...carts, bbq]
+    setCart(newCart)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {loading ? (
+        <div className="spinner">
+          <BounceLoader color="#000000" />
+        </div>
+      ) : (
+        <>
+          <Home
+          carts = {carts}
+          
+          ></Home>
+          
+          {loadingone ? (
+            <div className="spinner">
+              <SyncLoader color="#000000" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-3 gap-4" >
+              {bbqs.map((bbq) => (
+                <Bbq 
+                key={bbq.id} 
+                bbq={bbq}
+                hancleAddToCart = {hancleAddToCart}
+                
+                ></Bbq>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+    </>
   );
-}
-
+};
 export default App;
