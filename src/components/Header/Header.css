@@ -1,0 +1,47 @@
+*{
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul,li{
+    list-style: none;
+}
+
+.navbar{
+    font-size: 19px;
+    font-weight: 500;
+}
+
+li{
+    display: grid;
+    margin: 0 9px;
+}
+
+span{
+    font-family: 'Pacifico', cursive;
+    color: rgb(255, 242, 5);
+}
+
+.carts{
+    position: absolute;
+    top: 53px;
+    right: 70px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.nav{
+    position: fixed;
+    width: 100%;
+    
+}
+
+.foodmenu{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    left: 0;
+}
