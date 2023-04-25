@@ -37,6 +37,7 @@ span{
     position: fixed;
     width: 100%;
     
+    
 }
 
 .foodmenu{
@@ -45,3 +46,16 @@ span{
     width: 100%;
     left: 0;
 }
+
+.cartItem{
+    background-color: rgba(0,0,0,.8);
+    width: 100%;
+    height: 100vh;
+    right: 40px;
+    top: 65px;
+    border-radius: 15px;
+
+}
+
+
+

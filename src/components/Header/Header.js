@@ -5,17 +5,55 @@ import "./Header.css";
 import FoodMenu from "./FoodMenu/FoodMenu";
 import { data } from "../BBQ/Bbq";
 import { CartContext } from "../../Context/CartContext";
+import CartItem from "../CartItem/CartItem";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import'./react-toastify/dist/ReactToastify.css'
 
 
 const Header = () => {
   const [megamenuShow, setMegamenuShow] = useState(true);
+  const [show, setShow] = useState(true)
 
   const {cart, setCart} = useContext(CartContext)
+
+  
  
+  // const handleCartItem = () =>{
+
+  // }
+  
+
+  // console.log(cart)
+
+  const handleCartItem = () =>{
+    setShow(!show)
+    if(cart.length <= 0){
+      
+      setShow(true)
+      toast.warn('You did not add any product', {
+        position: "top-right",
+        top: "42rem",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+     
+    }
+    else{
+      
+    }
+    
+  }
 
   
 
   return (
+    <>
     <div className="nav">
      
       <div className="navbar flex justify-between px-16 py-4 bg-indigo-500 text-white ">
@@ -62,7 +100,7 @@ const Header = () => {
 
           {/*----------------- CartIcon ----------------------  */}
 
-          <div className="cart">
+          <div className="cart " onClick={()=>handleCartItem()} >
             <button
               type="button"
               class="relative inline-flex items-center px-3  text-sm font-medium text-center text-white  rounded-lg  focus:outline-none  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -85,7 +123,23 @@ const Header = () => {
           {/*----------------- CartIcon ----------------------  */}
         </div>
       </div>
+      
+     
+
+     <div className= {
+      !show? "cartItem" : ""
+     } >
+     {
+        !show? <CartItem></CartItem> : ""
+      }
+      
+      
+      
+     </div>
+     
     </div>
+    <ToastContainer />
+    </>
   );
 };
 

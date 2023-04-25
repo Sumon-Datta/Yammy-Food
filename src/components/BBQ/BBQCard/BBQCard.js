@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import "./BBQCard.css"
 import { CartContext } from "../../../Context/CartContext";
+import { toast } from "react-toastify";
 
 const BBQCard = ({ bbq }) => {
   const { img, name, price, rate } = bbq;
@@ -13,10 +14,23 @@ const BBQCard = ({ bbq }) => {
   const handleAddToCart = (bbq) =>{
     const newCart = [...cart, bbq]
     setCart(newCart)
+    toast.success('Your Product Add to Cart', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
   }
+
+  
 
   return (
     <>
+
       <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="?">
           <img
