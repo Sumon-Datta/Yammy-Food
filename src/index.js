@@ -5,15 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@material-tailwind/react';
 import CartProvider from './Context/CartContext';
+import LightProvider from './Context/LightContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <LightProvider>
     <CartProvider>
     <ThemeProvider>
     <App />
     </ThemeProvider>
     </CartProvider>
+    </LightProvider>
   </React.StrictMode>
 );
 

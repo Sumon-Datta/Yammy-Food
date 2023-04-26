@@ -10,10 +10,13 @@ const CartItem = () => {
     const {cart, setCart} = useContext(CartContext)
 
     const [deletecart, setDeletecart] = useState([])
+    
 
     const handleCartDelete = (id) =>{
         setCart(cart.filter(cartt => cartt.id !== id)) 
     }
+
+    
     
     
     return (
