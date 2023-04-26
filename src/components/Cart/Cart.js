@@ -1,3 +1,5 @@
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 
 const Cart = ({cart}) => {
@@ -10,7 +12,9 @@ const Cart = ({cart}) => {
             <img className='w-9 h-9 rounded-full'  src={img} alt="" />
             <h3 className='mx-3' >{name}</h3>
             <h3>{price}</h3>
-
+            
+            <FontAwesomeIcon icon={faTrash} />
+            
             
         </div>
     );
